@@ -1,0 +1,49 @@
+sidebar-button {
+  display: block;
+  color: black;
+  padding: 16px 16px;
+  text-decoration: none;
+  background-color: #ffffff;
+  text-align: center;
+  border: none;
+  width: 200px;
+}
+/* Active/current link */
+/*button.active {
+  background-color: #4CAF50;
+  color: white;
+}
+button:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}*/
+
+
+
+
+}
+
+normal-button {
+  display: block;
+  color: black;
+  padding: 16px 16px;
+  text-decoration: none;
+  background-color: #f8f8f8;
+  text-align: center;
+  border: none;
+  width: 50px;
+}
+/* Active/current link */
+/*button.active {
+  background-color: #4CAF50;
+  color: white;
+}
+button:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}*/
+
+
+
+
+}
