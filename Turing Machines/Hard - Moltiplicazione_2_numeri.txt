@@ -1,0 +1,177 @@
+;Created by Maurizio De Marchi, Student at University of Trento
+
+
+; N111xN1111=  **r   3x4=
+ 
+
+; a=[n 1 x = B]+{_}
+
+; stati per controlli
+
+; 0: controlla se c'è uno 0 come primo o secondo numero
+0 N N r 0
+0 x x l S01
+0 1 1 r S2
+0 = _ l S02
+
+; ST11a: IL PRIMO NUMERO ERA 1  vai alla fine a cancellare l'=
+ST11a 1 1 r ST11a
+ST11a x x r ST11a
+ST11a N N r ST11a
+ST11a = _ l ST11b
+
+; ST11b: IL PRIMO NUMERO ERA 1  scorri il secondo numero numero
+ST11b 1 1 l ST11b
+ST11b x _ l ST11c
+ST11b N N l ST11b
+
+; ST11c: IL PRIMO NUMERO ERA 1  cancella il primo numero
+ST11c 1 _ l ST11c
+ST11c N _ l ST11c
+ST11c _ _ r SBLF
+
+; SBLF: Il programma è finito ma la tetsina è nelle celle blank a sinistra  torna a destra e fermati alla N *r FINE
+SBLF _ _ r SBLF
+SBLF N N * SF
+
+
+; ST12a:  IL SECONDO NUMERO ERA 1 torna a x cancellando 
+ST12a 1 _ l ST12a
+ST12a N _ l ST12a
+ST12a x _ l ST12b
+
+
+; ST12b:  IL SECONDO NUMERO ERA 1  vai a N *r FINE
+ST12b 1 1 l ST12b
+ST12b N N * SF
+
+; S01:  Il primo numero è 0  cancella tutto e mette come risultato 0 *r FINE
+S01 N _ r S01
+S01 1 _ r S01
+S01 x _ r S01
+S01 = N * SF
+
+; S02:  il secondo numero è 0  cancella tutto a sinistra  alla prima cella bianca scrivi 0 *r FINE
+S02 1 _ l S02
+S02 N _ l S02
+S02 x _ l S02
+S02 _ N * SF
+
+
+
+; S2 controlla se c'è un uno come primo o secondo numero
+S2 x x r ST11a
+S2 = _ l ST12a
+S2 1 1 r STok
+
+; STok scorre il numero* Se stava scorrendo il primo va a S1  se trova l' = inizierà le operazioni di moltiplicazione
+STok 1 1 r STok
+STok x x r 0
+STok = = l SMf
+
+
+
+; stati per moltiplicazione  la testina inizia a sinistra dell' =
+
+;SMf: è la prima volta, scorri al primo numero e metti la b
+SMf 1 1 l SMf
+SMf N N l SMf
+SMf x x l SMf
+SMf _ _ r SM1a
+
+; SM2a:  è nel secondo numero  scorre a sinistra fino al N
+SM2a 1 1 l SM2a
+SM2a N N r SM2b
+
+; SM2b:  è nel secondo numero  scrive le B
+SM2b 1 B r SM2c
+SM2b B B r SM2b
+SM2b = = l SMi
+
+; SM2c:  ha scritto una b nel secondo  scorri fino all'=
+SM2c 1 1 r SM2c
+SM2c = = r SMr
+
+; SMr:  sta aggiungendo un 1 al risultato
+SMr 1 1 r SMr
+SMr _ 1 l SMr2
+
+; SMr2: ha aggiunto 1 al risultato, torna indietro
+SMr2 1 1 l SMr2
+SMr2 = = l SM2ab
+
+; SM2ab: è nel secondo numero  lo scorre finche non trova una B e poi torna a SM2b
+SM2ab 1 1 l SM2ab
+SM2ab B B r SM2b
+
+; SMi:  scorri fino all'inizio
+SMi 1 1 l SMi
+SMi = = l SMi
+SMi B B l SMi
+SMi N N l SMi
+SMi x x l SMi
+SMi _ _ r SM1a
+
+; SFL:  la moltiplicazione è finita  torna all' inizio prima di cancellare
+SFL B B l SFL
+SFL N _ r SFD
+
+; SFD:  la moltiplicazione è finita  cancella tutto a destra finche non arrivi al risultato *r FINE
+SFD B _ r SFD
+SFD N _ r SFD
+SFD x _ r SFD
+SFD 1 _ r SFD
+SFD = N * SF
+
+; SM1a:  è nel primo numero deve scrivere una b
+SM1a N N r SM1a
+SM1a 1 B r SM1b
+SM1a B B r SM1a
+SM1a x x l SFL
+
+; SM1b:  è nel primo numero deve tornare al secondo
+SM1b 1 1 r SM1b
+SM1b x x r SM1b
+SM1b N N r SM1c
+
+; SM1c:  è nel secondo numero  deve far tornare le b 1
+SM1c B 1 r SM1c
+SM1c 1 1 r SM1c
+SM1c = = l SM2a
+
+;PASSI
+
+;POSIZIONE
+;dai test risulta che quando il secondo numero è più grande la macchina è più veloce
+;es:  3*7 sono 813 passi, 7*3 sono 857
+;quando si parla del caso 1, averlo al secondo posto è più veloce
+;es:  1*7 sono 29 passi, 7*1 sono 22
+;quando si parla del caso 0, averlo al primo posto è più veloce
+;es:  0*7 sono 14 passi, 7*0 sono 21
+
+;QUADRATI
+;0*0 > 7
+;1*1 > 17
+;2*2 > 107
+;3*3 > 249
+;4*4 > 535
+;5*5 > 1055
+;6*6 > 1923
+
+;INCREMENTO A SINISTRA
+;0*3 > 10
+;1*3 > 21
+;2*3 > 152
+;3*3 > 249
+;4*3 > 368
+;5*3 > 509
+;6*3 > 672
+
+;INCREMENTO A DESTRA
+;3*0 > 15
+;3*1 > 16
+;3*2 > 168
+;3*3 > 249
+;3*4 > 354
+;3*5 > 483
+;3*6 > 636

@@ -1,0 +1,16 @@
+; 111+1111   =   2+3
+ 
+
+; a=[1 +] + {_}
+
+;sostituisce il +
+S0 1 1 r S0
+S0 + 1 l S1
+
+;torna all'inizio
+S1 1 1 l S1
+S1 _ _ r SD1
+
+;Cancella i due 1 in più
+SD1 1 _ r SD2
+SD2 1 _ r SF

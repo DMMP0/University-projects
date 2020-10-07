@@ -1,0 +1,204 @@
+;Created by Maurizio De Marchi, Student at University of Trento
+
+
+;divisione 2 numeri
+;N111/N11 = 3/2 = 1 con resto 1 = 1R1
+;Alfabeto: {N 1 / = B : ( } + _
+
+
+
+
+
+;Verifica se il primo numero è 0
+S0 N N r S0
+S0 1 B r S05
+S0 / / r S0F   ;il primo numero era 0, risultato 0 con resto secondo numero
+
+S0F N R r S0F
+S0F / N l S0F2
+S0F _ _ l SD
+S0F2 N _ r SF
+S0F 1 1 l  *
+S0F R R l *
+
+
+
+
+
+;in questo blocco effettua i controlli
+S01 1 B r S05
+S01 / / r S0? ; se é arrivato qui o il secondo era maggiore del primo o erano uguali
+
+;S0? controlla se il secondo numero era uguale al primo
+S0? N N r S0?
+S0? B B r S0?
+S0? 1 1 l S0N ;il secondo è maggiore del primo
+S0? _ _ l S0DP ;erano uguali, il risultato è 1
+S0DP * _ l S0DP
+S0DP _ N r S0F1
+S0F1 _ 1 l SF
+
+;Il secondo numero era maggiore del primo, il risultato è 0 resto N
+S0N * * l S0N
+S0N / R l S0D
+S0D B _ l S0D
+S0D N _ l S0D
+S0D 1 _ l S0D
+S0D _ _ r S0L
+S0L _ _ r S0L
+S0L R R l S0N
+S0N _ N r SF1 ; se arriva qui è perchè mancava una N prima del resto
+S0L N N r SF1  ;SF1 pulisce le b del secondo numero
+
+SF1 R R r SF1
+SF1 N N r SF1
+SF1 B _ r SF1
+SF1 1 1 l SFL  ;SFL scorre a sinistra e poi si ferma
+SFL * _ l SFL
+SFL R _ l SFL1
+SFL1 * _ l *
+SFL1 _ _ r SFD
+SFD _ _ r *
+SFD 1 1 l SFRRR
+SFRRR _ R l SFN
+SFN _ N * SF 
+
+;scorre fino al secondo numero
+S05 1 1 r S05
+S05 / / r S05
+S05 N N r S002
+
+;scorre indietro
+S07 1 1 l S07
+S07 / / l S071
+S07 N N l S07
+S07 B B l S07
+S071 1 1 l S071
+S071 B B r S01
+
+;controllo per lo 0 al secondo membro, se c'è 0 cancella tutto e scrive :(
+S002 1 B l S07
+S002 B B r S02
+S002 _ _ l SD
+SD * _ l *
+SD _ : r S(
+S( _ ( l SF
+
+;mette la B nel secondo numero
+S02 B B r S02
+S02 1 B l S07
+S02 _ _ l SV1  ;Se è arrivato qui il primo numero era maggiore del secondo
+
+;pulisce e torna all'inizio
+SV1 B 1 l SV1
+SV1 N N l SV1
+SV1 / / l SV1
+SV1 1 1 l SV1
+SV1 _ _ r Sinizio
+
+
+
+
+
+
+
+
+
+
+; da qua in poi inizia la moltiplicazione, siamo nella situazione m/n con m>n , m e n diversi da 0
+
+Sinizio * * r Sinizio
+Sinizio _ = l S11
+Sdestra * * r *
+Sdestra = = l S11
+
+S11 1 B l S1
+
+
+S1 * * l S1
+S1 / / l S2
+
+;sta scorrendo il primo numero
+S2 1 B r S3  ;se trova un 1 lo mette come b e va a destra
+S2 B B l S2
+S2 _ _ l S2
+S2 N N r SR  ;Se trova N vuol dire che deve iniziare col resto
+
+S3 B B r S3
+S3 N N r S3
+S3 1 B l S1
+S3 = = r SRis
+S3 _ _ r S3
+S3 / / r S3
+
+SRis _ 1 l SRis1
+SRis 1 1 r *
+SRis1 1 1 l *
+SRis1 = = l SB1
+
+
+SB1 B 1 l SB1
+SB1 N N l SB1
+SB1 / / l SB_
+SB1 = = l SB1
+SB_ B _ l SB_
+SB_ 1 1 * Sdestra
+SB_ _ _ l SB_
+SB_ N _ r SnoResto
+
+SnoResto * * r *
+SnoResto / _ r *
+SnoResto = N l SF3
+
+SF3 * _ l *
+SF3 _ _ r SF4
+
+SF4 _ _ r *
+SF4 N N * SF
+
+
+;SR gestisce il resto
+;va a destra pulendo dalle B
+SR B 1 r SR
+SR / / r SR
+SR _ _ r SR
+SR = = r SFR
+SR N N r SR
+SR 1 1 r SR
+
+SFR 1 1 r *
+SFR _ R l SR2
+
+;Dopo il /
+SR1 N N r SR1
+SR1 B 1 r SR1
+SR1 = = r SR1
+SR1 _ 1 l SR2
+SR1 1 1 r SR1
+SR1 R R r SR1
+
+;torna indietro a destra del /
+SR2 * * l *
+SR2 / / l SR3
+SR2 _ 1 l SR2
+
+;cancella l'1
+SR3 1 _ r SR4
+SR3 N _ r SRF
+SR3 _ _ l SR3
+
+SR4 * * r *
+SR4 / / r SR1
+
+SRF * _ r *
+SRF = N r SF
+
+
+; 0/0 -->  10 passi  
+; 0/1 -->  8 passi     1/0 -->  12 passi
+; 0/2 -->  8 passi     2/0 -->  14 passi
+; 3/1 -->  121 passi   1/3 -->  39 passi
+; 3/2 -->  149 passi   2/3 -->  57 passi
+; 3/3 -->  52 passi   
+; 3/4 -->  79 passi    4/3 -->  203 passi
+; 3/6 -->  79 passi    6/3 -->  229 passi

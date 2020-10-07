@@ -1,0 +1,15 @@
+S0 i i r S1
+
+S0 _ _ * S0
+
+
+
+S1 i i r S0
+
+S1 _ _ l ST
+
+
+
+ST i i l ST
+
+ST _ _ r SF

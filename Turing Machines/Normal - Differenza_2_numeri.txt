@@ -1,0 +1,43 @@
+;Created by Maurizio De Marchi, Student at University of Trento
+
+;m-n con m>=n   iii-ii = 2-1
+
+;scorre all'inizio
+S0 i i r S0
+S0 - - r S1
+
+;scorre dopo il - 
+S1 i i r S1
+S1 _ _ l S2
+
+;cancella la prima i per togliere quella in più dovuta allo 0
+S2 i _ l S3
+
+;Cancella la i dovuta alla sottrazione, se trova il - vuol dire che la sottrazione è finita
+S3 i _ l SP
+S3 - _ l SL
+
+;SP è lo stato di passaggio dalla i cancellata alla i del primo numero
+SP i i l SP
+SP - - l S4
+
+;Cancella la i del primo numero
+S4 i _ r S5
+S4 _ _ l S4
+
+
+;scorre i _ fino al -
+S5 _ _ r S5
+S5 - - r S6
+
+;S6 fa la stessa cosa di S1, ma dato che su S1 era la prima volta ora non deve andare in S2
+S6 i i r S6
+S6 _ _ l S3
+
+
+;gli SL servono a riposizionare la testina all'inizio del numero
+SL _ _ l SL
+SL i i l SL2
+
+SL2 i i l SL2
+SL2 _ _ r SF
