@@ -38,4 +38,3 @@ if($page<$total_pages)
 	}
  
 echo "</ul>";
-?>

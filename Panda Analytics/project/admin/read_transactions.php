@@ -54,21 +54,20 @@ if(isset($_GET['action']))
 			$flag = false;//non precisa
 			$m=$_POST['m'];
 			$transactionB->update($id,$tipo,$macro,$amm,$y,$ra,$m,$fid,$flag);
-			header("Location: {$home_url}/admin/read_transactions.php?action=read_from_flow&id=$fid");		
-			
-			
-		}
+
+
+        }
 		else
 		{
 			$flag = true;//precisa
 			$dp=$_POST['dp'];
 			$transactionP->update($id,$tipo,$macro,$amm,$y,$ra,$dp,$fid,$flag);
-			header("Location: {$home_url}/admin/read_transactions.php?action=read_from_flow&id=$fid");
-			
-			
-		}
-		
-		echo "</div>";	
+
+
+        }
+        header("Location: {$home_url}/admin/read_transactions.php?action=read_from_flow&id=$fid");
+
+        echo "</div>";
 	}
 	
 }
@@ -85,4 +84,3 @@ else
 	echo "</div>";
 }
 include_once "layout_foot.php";
-?>

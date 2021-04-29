@@ -102,4 +102,3 @@ else
         <strong>No Transactions found.</strong>
 		</div>";
 	}
-?>

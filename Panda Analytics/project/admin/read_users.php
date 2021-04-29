@@ -36,4 +36,3 @@ include_once "read_users_template.php";
 echo "</div>";
 
 include_once "layout_foot.php";
-?>

@@ -40,7 +40,7 @@ class Utils
 		$log = log($range, 2);
 		$bytes = (int) ($log / 8) + 1; // lunghezza in bytes
 		$bits = (int) $log + 1; // lunghezza in bits
-		$filter = (int) (1 << $bits) - 1; // buffa i lower bits (set to 1)
+		$filter = (1 << $bits) - 1; // buffa i lower bits (set to 1)
 		do 
 		{
 			$rnd = hexdec(bin2hex(openssl_random_pseudo_bytes($bytes)));
@@ -49,4 +49,3 @@ class Utils
 		return $min + $rnd;
 	}
 }
-?>

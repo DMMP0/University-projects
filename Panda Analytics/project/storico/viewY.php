@@ -23,24 +23,24 @@ include_once "$_SERVER[DOCUMENT_ROOT]/project/layout_head.php";
 
 
 //fonti
-$q="select t.id,t.tipo,t.amount,tp.t_date from transazioni as t inner join tprecisa as tp on tp.id_transazione=t.id where t.id_flow=:fid AND t.anno=:y AND tipo BETWEEN 100 AND 199 ORDER BY t_date ASC";
+$q= "select t.id,t.tipo,t.amount,tp.t_date from transazioni as t inner join tprecisa as tp on tp.id_transazione=t.id where t.id_flow=:fid AND t.anno=:y AND tipo BETWEEN 100 AND 199 ORDER BY t_date ";
 $stmt1 = $t->conn->prepare($q);
 $stmt1->bindParam(':fid', $fid);
 $stmt1->bindParam(':y', $y);
 $stmt1->execute();
-$q="select t.id,t.tipo,t.amount,tp.t_mese from transazioni as t inner join tboh as tp on tp.id_transazione=t.id where t.id_flow=:fid AND t.anno=:y AND tipo BETWEEN 100 AND 199 ORDER BY t_mese ASC";
+$q= "select t.id,t.tipo,t.amount,tp.t_mese from transazioni as t inner join tboh as tp on tp.id_transazione=t.id where t.id_flow=:fid AND t.anno=:y AND tipo BETWEEN 100 AND 199 ORDER BY t_mese ";
 $stmt15 = $t->conn->prepare($q);
 $stmt15->bindParam(':fid', $fid);
 $stmt15->bindParam(':y', $y);
 $stmt15->execute();
 //$num1 = $stmt1->rowCount();
 
-$q="select t.id,t.tipo,t.amount,tp.t_date from transazioni as t inner join tprecisa as tp on tp.id_transazione=t.id where t.id_flow=:fid AND t.anno=:y AND tipo BETWEEN 200 AND 299 ORDER BY t_date ASC";
+$q= "select t.id,t.tipo,t.amount,tp.t_date from transazioni as t inner join tprecisa as tp on tp.id_transazione=t.id where t.id_flow=:fid AND t.anno=:y AND tipo BETWEEN 200 AND 299 ORDER BY t_date ";
 $stmt2 = $t->conn->prepare($q);
 $stmt2->bindParam(':fid', $fid);
 $stmt2->bindParam(':y', $y);
 $stmt2->execute();
-$q="select t.id,t.tipo,t.amount,tp.t_mese from transazioni as t inner join tboh as tp on tp.id_transazione=t.id where t.id_flow=:fid AND t.anno=:y AND tipo BETWEEN 200 AND 299 ORDER BY t_mese ASC";
+$q= "select t.id,t.tipo,t.amount,tp.t_mese from transazioni as t inner join tboh as tp on tp.id_transazione=t.id where t.id_flow=:fid AND t.anno=:y AND tipo BETWEEN 200 AND 299 ORDER BY t_mese ";
 $stmt25 = $t->conn->prepare($q);
 $stmt25->bindParam(':fid', $fid);
 $stmt25->bindParam(':y', $y);
@@ -48,24 +48,24 @@ $stmt25->execute();
 //$num2 = $stmt2->rowCount();
 
 //impieghi
-$q="select t.id,t.tipo,t.amount,tp.t_date from transazioni as t inner join tprecisa as tp on tp.id_transazione=t.id where t.id_flow=:fid AND t.anno=:y AND tipo BETWEEN 300 AND 399 ORDER BY t_date ASC";
+$q= "select t.id,t.tipo,t.amount,tp.t_date from transazioni as t inner join tprecisa as tp on tp.id_transazione=t.id where t.id_flow=:fid AND t.anno=:y AND tipo BETWEEN 300 AND 399 ORDER BY t_date ";
 $stmt3 = $t->conn->prepare($q);
 $stmt3->bindParam(':fid', $fid);
 $stmt3->bindParam(':y', $y);
 $stmt3->execute();
-$q="select t.id,t.tipo,t.amount,tp.t_mese from transazioni as t inner join tboh as tp on tp.id_transazione=t.id where t.id_flow=:fid AND t.anno=:y AND tipo BETWEEN 300 AND 399 ORDER BY t_mese ASC";
+$q= "select t.id,t.tipo,t.amount,tp.t_mese from transazioni as t inner join tboh as tp on tp.id_transazione=t.id where t.id_flow=:fid AND t.anno=:y AND tipo BETWEEN 300 AND 399 ORDER BY t_mese ";
 $stmt35 = $t->conn->prepare($q);
 $stmt35->bindParam(':fid', $fid);
 $stmt35->bindParam(':y', $y);
 $stmt35->execute();
 //$num3 = $stmt3->rowCount();
 
-$q="select t.id,t.tipo,t.amount,tp.t_date from transazioni as t inner join tprecisa as tp on tp.id_transazione=t.id where t.id_flow=:fid AND t.anno=:y AND tipo BETWEEN 400 AND 499 ORDER BY t_date ASC";
+$q= "select t.id,t.tipo,t.amount,tp.t_date from transazioni as t inner join tprecisa as tp on tp.id_transazione=t.id where t.id_flow=:fid AND t.anno=:y AND tipo BETWEEN 400 AND 499 ORDER BY t_date ";
 $stmt4 = $t->conn->prepare($q);
 $stmt4->bindParam(':fid', $fid);
 $stmt4->bindParam(':y', $y);
 $stmt4->execute();
-$q="select t.id,t.tipo,t.amount,tp.t_mese from transazioni as t inner join tboh as tp on tp.id_transazione=t.id where t.id_flow=:fid AND t.anno=:y AND tipo BETWEEN 400 AND 499 ORDER BY t_mese ASC";
+$q= "select t.id,t.tipo,t.amount,tp.t_mese from transazioni as t inner join tboh as tp on tp.id_transazione=t.id where t.id_flow=:fid AND t.anno=:y AND tipo BETWEEN 400 AND 499 ORDER BY t_mese ";
 $stmt45 = $t->conn->prepare($q);
 $stmt45->bindParam(':fid', $fid);
 $stmt45->bindParam(':y', $y);
@@ -287,4 +287,3 @@ echo    "
  
 // footer HTML and JavaScript codes
 include "$_SERVER[DOCUMENT_ROOT]/project/layout_foot.php";
-?>

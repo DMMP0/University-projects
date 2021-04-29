@@ -240,4 +240,3 @@ unset($y);
  
 // footer HTML and JavaScript codes
 include "$_SERVER[DOCUMENT_ROOT]/project/layout_foot.php";
-?>

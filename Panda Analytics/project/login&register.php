@@ -24,7 +24,7 @@ include_once "config/InputCheckFoo.php";
 	
 	echo "<div class='col-sm-6 col-md-4 col-md-offset-4'>";
 	//messaggi vari
-	$action=isset($_GET['action']) ? $_GET['action'] : "";
+	$action= $_GET['action'] ?? "";
 	if($action =='not_yet_logged_in')
 	{
 		echo "<div class='alert alert-danger margin-top-40' role='alert'>Please login.</div>";
@@ -118,4 +118,3 @@ include_once "config/InputCheckFoo.php";
 // footer HTML and JavaScript codes
 include_once "layout_foot.php";
 		
-?>

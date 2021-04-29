@@ -1,4 +1,4 @@
-<style>
+
 
 * {box-sizing: border-box;}
 
@@ -10,7 +10,7 @@ body {
 
 
 img {
-  float: center;
+
   background-color: #f1f1f1;
 }
 
@@ -47,7 +47,7 @@ img {
 }
 
 table, td, th {
-  border: 0px solid black; padding: 20px 50px;
+  border: 0 solid black; padding: 20px 50px;
 }
 
 table {
@@ -100,12 +100,9 @@ button:hover {
 
 .pagination a {
   color: black;
-  float: center;
-  left: 0;
   bottom: 0;
   width: 100%;
   padding: 8px 16px;
   text-align: center;
   text-decoration: none;
 }
-</style>

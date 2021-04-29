@@ -22,7 +22,7 @@
 			<ul class="nav navbar-nav">
 				<li class="nav-item active" <?php echo $page_title=="Home" ? "class='active'" : ""; ?>>
 					<a class="nav-link" href="<?php echo $home_url."?h=0"; ?>"><strong>Panda Analytics</strong>
-					<img src=<?php  echo "\"http://localhost/project/img/panda.svg\""?> width="35" height="35" class="d-inline-block align-top" >
+					<img  alt="icon" src=<?php  echo "\"http://localhost/project/img/panda.svg\""?> width="35" height="35" class="d-inline-block align-top" >
 					</a>
 				</li>
 			</ul>

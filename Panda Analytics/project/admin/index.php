@@ -7,7 +7,7 @@ include 'layout_head.php';
  
 echo "<div class='col-md-12'>";
  
-$action = isset($_GET['action']) ? $_GET['action'] : "";
+$action = $_GET['action'] ?? "";
 if($action=='already_logged_in')
 	{
         echo "<div class='alert alert-info'>";
@@ -26,4 +26,3 @@ if($action=='already_logged_in')
     echo "</div>";
  
 include_once 'layout_foot.php';
-?>

@@ -3,8 +3,7 @@ function q($t,$n)
 {
 	if(isset($_SESSION["query_flag"])&& $_SESSION["query_flag"]==true)
 	{
-		$q="update transazioni set tipo=:tipo,amount=:cifra,macroarea=$n,anno=:anno,id_flow=:flow where id=:id";
-		return $q;
+        return "update transazioni set tipo=:tipo,amount=:cifra,macroarea=$n,anno=:anno,id_flow=:flow where id=:id";
 	}
 	
 	
@@ -955,8 +954,7 @@ switch($action)
 		
 		
 		exit;
-		break;
-	}
+    }
 					 
 	default : {$page_title="SPFonti1";break;}
 }
@@ -1306,7 +1304,7 @@ switch($action)
        echo "<a>2</a>";
        echo "<a>3</a>";
        echo "<a>4</a>
-             <input class=\"next\" type=\"submit\" value=\"Avanti &raquo;\"></input>";
+             <input class=\"next\" type=\"submit\" value=\"Avanti &raquo;\"/>";
        echo"
       
      </div>
@@ -1462,7 +1460,7 @@ echo "</div>
        echo "<a><strong>2</strong></a>";
        echo "<a>3</a>";
        echo "<a>4</a>
-       <input class=\"next\" type=\"submit\" value=\"Salva\"></input>";
+       <input class=\"next\" type=\"submit\" value=\"Salva\"/>";
        echo"
      
      </div>
@@ -1698,7 +1696,7 @@ echo "</div>
        echo "<a>2</a>";
        echo "<a><strong>3</strong></a>";
        echo "<a>4</a>
-       <input class=\"next\" type=\"submit\" value=\"Salva\"></input>";
+       <input class=\"next\" type=\"submit\" value=\"Salva\"/>";
        echo"
      
      </div>
@@ -1883,7 +1881,7 @@ echo "</div>
        echo "<a>2</a>";
        echo "<a>3</a>";
        echo "<a><strong>4</strong></a>
-       <input class=\"next\" type=\"submit\" value=\"Salva\"></input>";
+       <input class=\"next\" type=\"submit\" value=\"Salva\"/>";
        echo"
      
      </div>

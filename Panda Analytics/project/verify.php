@@ -8,7 +8,7 @@ $database = new Database();
 $db = $database->getConnection();
  
 $user = new User($db);
-$user->access_code=isset($_GET['access_code']) ? $_GET['access_code'] : "";
+$user->access_code= $_GET['access_code'] ?? "";
  
 if(!$user->accessCodeExists())
 {
@@ -22,4 +22,3 @@ else
      
     header("Location: {$home_url}login.php?action=email_verified");
 }
-?>

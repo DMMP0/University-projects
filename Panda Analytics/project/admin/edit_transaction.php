@@ -73,4 +73,3 @@ echo "	</form>";
 echo "</div>";
 
 include_once "layout_foot.php";
-?>

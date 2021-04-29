@@ -21,7 +21,7 @@ include_once 'layout_head.php';
 echo "<div class='col-md-12'>";
  
     // per prevenire undefined index notice
-    $action = isset($_GET['action']) ? $_GET['action'] : "";
+    $action = $_GET['action'] ?? "";
 	
     if($action=='login_success')
 	{
@@ -45,4 +45,3 @@ echo "</div>";
  
 // footer HTML and JavaScript codes
 include 'layout_foot.php';
-?>

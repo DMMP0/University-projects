@@ -25,22 +25,21 @@ function rip_tags($string)
     $string = str_replace("\t", '', $string);   // --- replace with empty space
   //  echo " $string ->";
     // ----- remove multiple spaces ----- 
-    $string = trim(preg_replace('/ {2,}/', ' ', $string));
-  //  echo "$string <- inside rip_tags";
-    return $string; 
+    //  echo "$string <- inside rip_tags";
+    return trim(preg_replace('/ {2,}/', ' ', $string));
 
 }//strip tags non funziona
 
 function test_input($data) 
 {
   //$data = trim($data); // toglie spazi, tabs e newline extra
-  
-  $data = rip_tags($data);//rimuove i tag html
+
+    //rimuove i tag html
   //$data = stripslashes($data);
   //$data = preg_replace("/&#?[a-z0-9]{2,8};/i","",$data);
   
   //$data = mysqli_real_escape_string($data); // aiuta a prevenire sql injection, ma la parte consistente sono le parameterized queries
-  return $data;
+  return rip_tags($data);
 }
 
 
@@ -112,22 +111,21 @@ function validate_mail($data)
 
 function month($num)
 {
-	switch($num)
-	{
-		case 1:return "Gennaio";
-		case 2:return "Febbraio";
-		case 3:return "Marzo";
-		case 4:return "Aprile";
-		case 5:return "Maggio";
-		case 6:return "Giugno";
-		case 7:return "Luglio";
-		case 8:return "Agosto";
-		case 9:return "Settembre";
-		case 10:return "Ottobre";
-		case 11: return "Novembre";
-		case 12: return "Dicembre";
-		default:return "";
-	}
+    return match ($num) {
+        1 => "Gennaio",
+        2 => "Febbraio",
+        3 => "Marzo",
+        4 => "Aprile",
+        5 => "Maggio",
+        6 => "Giugno",
+        7 => "Luglio",
+        8 => "Agosto",
+        9 => "Settembre",
+        10 => "Ottobre",
+        11 => "Novembre",
+        12 => "Dicembre",
+        default => "",
+    };
 }
 
 
@@ -368,4 +366,3 @@ function fromCodeToString($code)
 	
 }
 
-?>

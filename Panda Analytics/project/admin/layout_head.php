@@ -28,6 +28,6 @@
         <!-- display page title -->
         <div class="col-md-12">
             <div class="page-header">
-                <h1><?php echo isset($page_title) ? $page_title : "Admin"; ?></h1>
+                <h1><?php echo $page_title ?? "Admin"; ?></h1>
             </div>
         </div>

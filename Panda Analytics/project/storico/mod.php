@@ -80,14 +80,14 @@ $row2=null;
 
 
 //fonti
-$q="select t.id,t.tipo,t.amount,tp.t_mese from transazioni as t inner join tboh as tp on tp.id_transazione=t.id where t.id_flow=:fid AND t.anno=:y AND macroarea=0 ORDER BY t_mese ASC";
+$q= "select t.id,t.tipo,t.amount,tp.t_mese from transazioni as t inner join tboh as tp on tp.id_transazione=t.id where t.id_flow=:fid AND t.anno=:y AND macroarea=0 ORDER BY t_mese ";
 $stmt1 = $t->conn->prepare($q);
 $stmt1->bindParam(':fid', $fid);
 $stmt1->bindParam(':y', $y);
 $stmt1->execute();
 $num1 = $stmt1->rowCount();
 
-$q="select t.id,t.tipo,t.amount,tp.t_date from transazioni as t inner join tprecisa as tp on tp.id_transazione=t.id where t.id_flow=:fid AND t.anno=:y AND macroarea=0 ORDER BY t_date ASC";
+$q= "select t.id,t.tipo,t.amount,tp.t_date from transazioni as t inner join tprecisa as tp on tp.id_transazione=t.id where t.id_flow=:fid AND t.anno=:y AND macroarea=0 ORDER BY t_date ";
 $stmt2 = $t->conn->prepare($q);
 $stmt2->bindParam(':fid', $fid);
 $stmt2->bindParam(':y', $y);
@@ -95,14 +95,14 @@ $stmt2->execute();
 $num2 = $stmt2->rowCount();
 
 //impieghi
-$q="select t.id,t.tipo,t.amount,tp.t_mese from transazioni as t inner join tboh as tp on tp.id_transazione=t.id where t.id_flow=:fid AND t.anno=:y AND macroarea=1 ORDER BY t_mese ASC";
+$q= "select t.id,t.tipo,t.amount,tp.t_mese from transazioni as t inner join tboh as tp on tp.id_transazione=t.id where t.id_flow=:fid AND t.anno=:y AND macroarea=1 ORDER BY t_mese ";
 $stmt3 = $t->conn->prepare($q);
 $stmt3->bindParam(':fid', $fid);
 $stmt3->bindParam(':y', $y);
 $stmt3->execute();
 $num3 = $stmt3->rowCount();
 
-$q="select t.id,t.tipo,t.amount,tp.t_date from transazioni as t inner join tprecisa as tp on tp.id_transazione=t.id where t.id_flow=:fid AND t.anno=:y AND macroarea=1 ORDER BY t_date ASC";
+$q= "select t.id,t.tipo,t.amount,tp.t_date from transazioni as t inner join tprecisa as tp on tp.id_transazione=t.id where t.id_flow=:fid AND t.anno=:y AND macroarea=1 ORDER BY t_date ";
 $stmt4 = $t->conn->prepare($q);
 $stmt4->bindParam(':fid', $fid);
 $stmt4->bindParam(':y', $y);
@@ -389,4 +389,4 @@ elseif($tot2!=0&&$tot==0){
 // footer HTML and JavaScript codes
 
 include_once "$_SERVER[DOCUMENT_ROOT]/project/layout_foot.php";
-?>
+

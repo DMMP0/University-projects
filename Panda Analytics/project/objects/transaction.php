@@ -81,13 +81,11 @@ abstract class Transaction
 		if($stmt->execute())
 		  {
 				return true;
-		  }	
-		else
-		  {	
-			showError($stmt);
-		  	return false;
-	   	  }	  
-	}
+		  }
+
+        showError($stmt);
+        return false;
+    }
 	
 	public function update($id,$tipo,$macro,$amm,$y,$ra,$m,$fid,$flag)
 	{
@@ -104,23 +102,19 @@ abstract class Transaction
 		if($flag)
 		{
 			$query = "UPDATE TPRECISA SET T_DATE=:m WHERE ID_TRANSAZIONE=:id";
-			$stmt = $this->conn->prepare( $query );
-			$stmt->bindParam(':id', $id);
-			$stmt->bindParam(':m', $m);
-			
-			$stmt->execute();
-		}
+
+        }
 		else
 		{
 			$query = "UPDATE TBOH SET T_MESE=:m WHERE ID_TRANSAZIONE=:id";
-			$stmt = $this->conn->prepare( $query );
-			$stmt->bindParam(':id', $id);
-			$stmt->bindParam(':m', $m);
-			
-			$stmt->execute();
-		}
-		   
-	}
+
+        }
+        $stmt = $this->conn->prepare( $query );
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':m', $m);
+        $stmt->execute();
+
+    }
 	
 	//legge tutti i record
 	function readAll($from_record_num, $records_per_page)
@@ -176,8 +170,7 @@ abstract class Transaction
 		$query = "SELECT id_transazione FROM " . $this->table_name . "";
 		$stmt = $this->conn->prepare($query);
 		$stmt->execute();
-		$num = $stmt->rowCount();
-		return $num;
+        return $stmt->rowCount();
 	}
 	
 	
@@ -252,4 +245,3 @@ class TBoh extends Transaction
 
 
 
-?>

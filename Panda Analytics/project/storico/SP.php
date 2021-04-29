@@ -6,8 +6,7 @@ function q($t,$n)
 {
 	if(isset($_SESSION["query_flag"])&&$_SESSION["query_flag"])
 	{
-		$q="update transazioni set tipo=:tipo,amount=:cifra,macroarea=$n,anno=:anno,id_flow=:flow where id=:id";
-		return $q;
+		return "update transazioni set tipo=:tipo,amount=:cifra,macroarea=$n,anno=:anno,id_flow=:flow where id=:id";
 	}
 	
 	if(isset($_POST['anno']))
@@ -25,8 +24,8 @@ function q($t,$n)
 				if($anno == $_POST['anno'])
 				{
 					$q="update transazioni set tipo=:tipo,amount=:cifra,macroarea=$n,anno=:anno,id_flow=:flow where id=:id";
-					break;
 					$_SESSION["query_flag"] = true;
+					break;
 				}
 				else
 					$q="insert into transazioni values(:id,:tipo,:cifra,$n,:anno,0,:flow)";
@@ -38,6 +37,7 @@ function q($t,$n)
 		return $q;
 	
 	}
+	return -1;
 }
     //Altervistaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 
@@ -446,8 +446,7 @@ switch($action)
                    
                    
                    exit;
-                break;
-            }
+  }
                 
   default : {$page_title="SPFonti1";break;}
 }
@@ -619,7 +618,7 @@ switch($action)
       echo "<a>2</a>";
       echo "<a>3</a>";
       echo "<a>4</a>
-            <input class=\"next\" type=\"submit\" value=\"Avanti &raquo;\"></input>";
+            <input class=\"next\" type=\"submit\" value=\"Avanti &raquo;\"/>";
       echo"
      
     </div>
@@ -707,7 +706,7 @@ echo "
       echo "<a><strong>2</strong></a>";
       echo "<a>3</a>";
       echo "<a>4</a>
-      <input class=\"next\" type=\"submit\" value=\"Avanti &raquo;\"></input>";
+      <input class=\"next\" type=\"submit\" value=\"Avanti &raquo;\"/>";
       echo"
     
     </div>
@@ -831,7 +830,7 @@ echo "
       echo "<a>2</a>";
       echo "<a><strong>3</strong></a>";
       echo "<a>4</a>
-      <input class=\"next\" type=\"submit\" value=\"Avanti &raquo;\"></input>";
+      <input class=\"next\" type=\"submit\" value=\"Avanti &raquo;\"/>";
       echo"
      
     </div>
@@ -933,7 +932,7 @@ echo "
       echo "<a>2</a>";
       echo "<a>3</a>";
       echo "<a><strong>4</strong></a>
-      <input class=\"next\" type=\"submit\" value=\"Salva\"></input>";
+      <input class=\"next\" type=\"submit\" value=\"Salva\"/>";
       echo"
     
     </div>
@@ -952,7 +951,7 @@ echo "
 
 // footer HTML and JavaScript codes
 include "$_SERVER[DOCUMENT_ROOT]/project/layout_foot.php";
-?>
+
 
 
 

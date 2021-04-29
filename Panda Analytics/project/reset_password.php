@@ -16,7 +16,7 @@ include_once "layout_head.php";
 echo "<div class='col-sm-12'>";
  
  
-$access_code=isset($_GET['access_code']) ? $_GET['access_code'] : die("Access code not found.");
+$access_code= $_GET['access_code'] ?? die("Access code not found.");
  
 
 $user->access_code=$access_code;
@@ -62,4 +62,3 @@ else
 echo "</div>";
  
 include_once "layout_foot.php";
-?>

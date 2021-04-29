@@ -40,7 +40,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
 			echo "<div class=\"container-flow-display\">";
 				echo "<div class=\"container-flow-display-first-line\">";
 				//echo "<a href='{$home_url}index.php?action=refresh&flow=$id'>Azienda $1</a>";
-				echo /* "<div>*/" <button onclick=\"window.location.href='{$home_url}index.php?flow={$id}&action=refresh1'\">Azienda $i</button>";
+				echo /* "<div>*/" <button onclick=\"window.location.href='$home_urlindex.php?flow=$id&action=refresh1'\">Azienda $i</button>";
 				echo "<button onclick=\"window.location.href='{$home_url}index.php?flow={$id}&action=delete'\"> <i class='fas fa-trash-alt'></i></button></div>";
 			//	echo "</div>";
 				echo "<div class=\"container-flow-display-details\">";

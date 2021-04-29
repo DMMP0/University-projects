@@ -23,10 +23,10 @@ $query2 =   "SELECT
 			WHERE ID_FLOW=?";
 			
 //serve a contare gli anni
-$query3 =   "SELECT DISTINCT anno AS a
+$query3 = "SELECT DISTINCT anno AS a
 			FROM TRANSAZIONI
 			WHERE ID_FLOW=?
-			ORDER BY anno ASC";
+			ORDER BY anno ";
 			
 			
 $TP=new TPrecisa($db);
@@ -95,7 +95,7 @@ while ($row = $stmt2->fetch(PDO::FETCH_ASSOC))
 		}
 		
 
-foreach ($yearAmount as $key => &$val) 
+foreach ($yearAmount as $key => $val)
 {
     array_push($dataPoints1,array("y" => $val,"label" => $key ) );
 }
@@ -105,6 +105,6 @@ $_SESSION['data1']=$dataPoints1;
 
 //var_dump($dataPoints1);
  
-?>
+
 
 

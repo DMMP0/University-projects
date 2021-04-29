@@ -181,8 +181,7 @@ class User
 		$query = "SELECT id FROM " . $this->table_name . "";
 		$stmt = $this->conn->prepare($query);
 		$stmt->execute();
-		$num = $stmt->rowCount();
-		return $num;
+        return $stmt->rowCount();
 	}
 	
 	public function countAllFlows($username)
@@ -192,8 +191,7 @@ class User
 		$stmt = $this->conn->prepare($query);
 		$stmt->bindParam(':username', $username);
 		$stmt->execute();
-		$num = $stmt->rowCount();
-		return $num;
+        return $stmt->rowCount();
 	}
 	
 	// used in email verification feature
@@ -300,4 +298,3 @@ class User
 	
 	
 }
-?>

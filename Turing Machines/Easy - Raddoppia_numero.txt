@@ -1,0 +1,17 @@
+;Alfabeto: {1,0}  0=0   1=1  2=10
+;La macchina di turing raddoppia il numero.
+
+;controlla se il numero è 0
+S0 0 0 * SF
+S0 1 1 r S1
+
+;Va alla fine e aggiungi 0
+S1 1 0 r S1
+S1 0 0 r S1
+S1 _ 0 l S2
+
+; Torna all'inizio
+
+S2 0 0 l S2
+S2 1 1 l S2
+S2 _ _ r SF

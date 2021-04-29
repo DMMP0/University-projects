@@ -156,8 +156,7 @@ class Flow
 		$query = "SELECT id FROM " . $this->table_name . "";
 		$stmt = $this->conn->prepare($query);
 		$stmt->execute();
-		$num = $stmt->rowCount();
-		return $num;
+        return $stmt->rowCount();
 	}
 	
 	function readAllPTransactions()
@@ -206,4 +205,3 @@ class Flow
 	
 	
 }
-?>

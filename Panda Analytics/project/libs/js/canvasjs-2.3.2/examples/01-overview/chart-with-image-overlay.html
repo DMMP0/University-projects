@@ -50,11 +50,11 @@ function addImages(chart) {
 	for(var i = 0; i < chart.data[0].dataPoints.length; i++){
 		var dpsName = chart.data[0].dataPoints[i].name;
 		if(dpsName == "cloudy"){
-			images.push($("<img>").attr("src", "https://canvasjs.com/wp-content/uploads/images/gallery/gallery-overview/cloudy.png"));
+			images.push($("<!--suppress ALL --><img>").attr("src", "https://canvasjs.com/wp-content/uploads/images/gallery/gallery-overview/cloudy.png"));
 		} else if(dpsName == "rainy"){
-		images.push($("<img>").attr("src", "https://canvasjs.com/wp-content/uploads/images/gallery/gallery-overview/rainy.png"));
+		images.push($("<!--suppress ALL --><img>").attr("src", "https://canvasjs.com/wp-content/uploads/images/gallery/gallery-overview/rainy.png"));
 		} else if(dpsName == "sunny"){
-			images.push($("<img>").attr("src", "https://canvasjs.com/wp-content/uploads/images/gallery/gallery-overview/sunny.png"));
+			images.push($("<!--suppress ALL --><img>").attr("src", "https://canvasjs.com/wp-content/uploads/images/gallery/gallery-overview/sunny.png"));
 		}
 
 	images[i].attr("class", dpsName).appendTo($("#chartContainer>.canvasjs-chart-container"));
@@ -103,6 +103,6 @@ function formatter(e) {
 <body>
 <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>  
 <script src="../../jquery.canvasjs.min.js"></script>
-<div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
+<div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0 auto;"></div>
 </body>
 </html>

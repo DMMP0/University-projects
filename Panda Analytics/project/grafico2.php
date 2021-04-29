@@ -101,7 +101,7 @@ $dataPoints2 = array(
 $_SESSION['data2']=$dataPoints2;
  
  
-?>
+
 
 
 

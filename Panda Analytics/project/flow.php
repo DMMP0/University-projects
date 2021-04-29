@@ -161,23 +161,21 @@ else if($action=='delete')
 	
 }
 else
-  {	
-		
-		if(isset($_SESSION['current_flow_id'])&&$_SESSION['current_flow_id']!=0)
+  {
+
+      echo "<div class='col-md-12'>";
+      if(isset($_SESSION['current_flow_id'])&&$_SESSION['current_flow_id']!=0)
 		{
-			echo "<div class='col-md-12'>";	
-					include_once "singleFlowDisplay.php";
-			echo "</div>";
-		}
+            include_once "singleFlowDisplay.php";
+        }
 		else
-		{	
-			echo "<div class='col-md-12'>";
-				include_once "flowDisplay.php";
-			echo "</div>";
-		}
-		
-   
-		echo "</div>";
+		{
+            include_once "flowDisplay.php";
+        }
+      echo "</div>";
+
+
+      echo "</div>";
    }
 	
     
@@ -186,4 +184,3 @@ echo "</div>";
  
 
 
-?>

@@ -47,4 +47,3 @@ else
         <strong>No users found.</strong>
 		</div>";
 	}
-?>
